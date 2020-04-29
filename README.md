@@ -4,9 +4,9 @@ This is a little utility that I made to keep a collection/folder in sync with Zo
 My zotero setup uses external storage (I store all attachments on OneDrive)
 
 ## Setup
-    - install rmapi
-    - Download the [sync.py](https://raw.githubusercontent.com/oscarmorrison/zoteroRemarkableO/master/sync.py)
-    - create a `.env` file
+ - install rmapi
+ - Download the [sync.py](https://raw.githubusercontent.com/oscarmorrison/zoteroRemarkableO/master/sync.py)
+ - create a `.env` file
 
 ### Dependancies
 - python3
