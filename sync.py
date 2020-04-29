@@ -7,7 +7,7 @@ load_dotenv()
 
 # import pprint
 # pp = pprint.PrettyPrinter(indent=4)
-
+# # usage pp.pprint
 
 LIBRARY_TYPE = 'user'
 
@@ -28,11 +28,11 @@ def getCollectionId(zotero, collection_name):
         if (collection.get('data').get('name') == collection_name):
             return collection.get('data').get('key')
 
-def getPapersTitleAndPaths(zotero, collection_id, STORAGE_BASE_PATH):
+def getPapersTitleAndPathsFromZoteroCollection(zotero, collection_id, STORAGE_BASE_PATH):
     papers = []
     collection_items = zotero.collection_items(collection_id);
     for item in collection_items:
-        if(item.get('data').get('contentType') == 'application/pdf'):
+        if(item.get('data').get('contentType') == 'application/pdf') and item.get('data').get('linkMode') == 'linked_file':
             item_pdf_path = STORAGE_BASE_PATH + item.get('data').get('path')[12:]
             item_title = item.get('data').get('title')[:-4]
             if (item_pdf_path and item_title):
@@ -85,9 +85,9 @@ def deletePapers(delete_list):
 
 print('------- sync started -------')
 collection_id = getCollectionId(zotero, COLLECTION_NAME)
-# get papers that we want from Zetero Remarkable collection
 
-papers = getPapersTitleAndPaths(zotero, collection_id, STORAGE_BASE_PATH)
+# get papers that we want from Zetero Remarkable collection
+papers = getPapersTitleAndPathsFromZoteroCollection(zotero, collection_id, STORAGE_BASE_PATH)
 print(f"{len(papers)} papers in Zotero {COLLECTION_NAME} collection name")
 for paper in papers:
     print(paper.get('title'))
