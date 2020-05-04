@@ -21,3 +21,8 @@ My zotero setup uses external storage (I store all attachments on OneDrive)
 - get zotero library_id (from zotero web)
 - create a folder on remarkable and a collection in zotero
 - get base path for zotero pdf (papers)
+
+### Usage
+_(ensure you have a .env file, with zotero api key, and rmapi setup)_  
+Then to sync, just run:  
+  `python3 sync.py`
